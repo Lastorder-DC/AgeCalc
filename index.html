@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="귀찮고 복잡한 세는 나이와 만 나이를 변환해줍니다.">
         <meta name="author" content="Lastorder-DC">
-        <title>세는 나이 / 만 나이 계산기</title>
+        <title>세는 나이 / 만 나이 계산기 </title>
         <!-- Bootstrap core CSS -->
         <link href="./bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <!-- Favicons -->
@@ -76,6 +76,64 @@
                     <p class="lead">헷갈리는 세는 나이와 만 나이 계산기</p>
                 </div>
                 <div class="row g-5">
+                    <div class="col-md-7 col-lg-8">
+                        <h4 class="mb-3">세는 나이 → 만 나이 변환</h4>
+                        <form class="needs-validation" novalidate="">
+                            <div class="row g-3">
+                                <div class="col-sm-4">
+                                    <label for="countAge" class="form-label">세는 나이</label>
+                                    <div class="input-group has-validation">
+                                        <input type="number" class="form-control" id="countAge" onchange="updateManAge()">
+                                        <span class="input-group-text">세</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="BirthPassed" class="form-label">생일 여부</label>
+                                    <select id="BirthPassed" class="form-select" onchange="updateManAge()">
+                                        <option selected="" value="passed">생일이 지났습니다</option>
+                                        <option value="notpassed">생일이 지나지 않았습니다</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="manAge" class="form-label">만 나이</label>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text">만</span>
+                                        <input type="number" class="form-control" id="manAge" disabled>
+                                        <span class="input-group-text">세</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <hr class="my-4">
+                        <h4 class="mb-3">생일 기준 세는 나이와 만 나이</h4>
+                        <form class="needs-validation" novalidate="">
+                            <div class="row g-3">
+                                <div class="col-sm-3">
+                                    <label for="birthDay" class="form-label">생일</label>
+                                    <input type="date" class="form-control" id="birthDay" onchange="updateManAgeDate()">
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="todayDate" class="form-label">기준 날짜</label>
+                                    <input type="date" class="form-control" id="todayDate" onchange="updateManAgeDate()">
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="countAgeDate" class="form-label">세는 나이</label>
+                                    <div class="input-group has-validation">
+                                        <input type="number" class="form-control" id="countAgeDate" disabled="">
+                                        <span class="input-group-text">세</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="manAgeDate" class="form-label">만 나이</label>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text">만</span>
+                                        <input type="number" class="form-control" id="manAgeDate" disabled="">
+                                        <span class="input-group-text">세</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                     <div class="col-md-5 col-lg-4 order-md-last">
                         <h4 class="d-flex justify-content-between align-items-center mb-3">
                             <span class="text-primary">학교 학년별 나이</span>
@@ -187,64 +245,6 @@
                                 <span>만 17 ~ 18세</span>
                             </li>
                         </ul>
-                    </div>
-                    <div class="col-md-7 col-lg-8">
-                        <h4 class="mb-3">세는 나이 → 만 나이 변환</h4>
-                        <form class="needs-validation" novalidate="">
-                            <div class="row g-3">
-                                <div class="col-sm-4">
-                                    <label for="countAge" class="form-label">세는 나이</label>
-                                    <div class="input-group has-validation">
-                                        <input type="number" class="form-control" id="countAge" onchange="updateManAge()">
-                                        <span class="input-group-text">세</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <label for="BirthPassed" class="form-label">생일 여부</label>
-                                    <select id="BirthPassed" class="form-select" onchange="updateManAge()">
-                                        <option selected="" value="passed">생일이 지났습니다</option>
-                                        <option value="notpassed">생일이 지나지 않았습니다</option>
-                                    </select>
-                                </div>
-                                <div class="col-sm-4">
-                                    <label for="manAge" class="form-label">만 나이</label>
-                                    <div class="input-group has-validation">
-                                        <span class="input-group-text">만</span>
-                                        <input type="number" class="form-control" id="manAge" disabled>
-                                        <span class="input-group-text">세</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <hr class="my-4">
-                        <h4 class="mb-3">생일 기준 세는 나이와 만 나이</h4>
-                        <form class="needs-validation" novalidate="">
-                            <div class="row g-3">
-                                <div class="col-sm-3">
-                                    <label for="birthDay" class="form-label">생일</label>
-                                    <input type="date" class="form-control" id="birthDay" onchange="updateManAgeDate()">
-                                </div>
-                                <div class="col-sm-3">
-                                    <label for="todayDate" class="form-label">기준 날짜</label>
-                                    <input type="date" class="form-control" id="todayDate" onchange="updateManAgeDate()">
-                                </div>
-                                <div class="col-sm-3">
-                                    <label for="countAgeDate" class="form-label">세는 나이</label>
-                                    <div class="input-group has-validation">
-                                        <input type="number" class="form-control" id="countAgeDate" disabled="">
-                                        <span class="input-group-text">세</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <label for="manAgeDate" class="form-label">만 나이</label>
-                                    <div class="input-group has-validation">
-                                        <span class="input-group-text">만</span>
-                                        <input type="number" class="form-control" id="manAgeDate" disabled="">
-                                        <span class="input-group-text">세</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </main>
