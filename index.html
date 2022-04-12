@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="귀찮고 복잡한 세는 나이와 만 나이를 변환해줍니다.">
+        <meta name="author" content="Lastorder-DC">
+        <title>세는 나이 / 만 나이 계산기</title>
+        <!-- Bootstrap core CSS -->
+        <link href="./bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" href="./apple-touch-icon.png" sizes="180x180">
+        <link rel="icon" href="./favicon-32x32.png" sizes="32x32" type="image/png">
+        <link rel="icon" href="./favicon-16x16.png" sizes="16x16" type="image/png">
+        <link rel="manifest" href="./manifest.json">
+        <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#7952b3">
+        <link rel="icon" href="./favicon.ico">
+        <meta name="theme-color" content="#7952b3">
+        <style>
+            .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            }
+            @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+            }
+            }
+        </style>
+        <script>
+            Date.prototype.toDateInputValue = (function() {
+                var local = new Date(this);
+                local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+                return local.toJSON().slice(0,10);
+            });
+            
+            function updateManAge(){
+                var countAge = document.getElementById("countAge").value;
+                var isBirthPassed = document.getElementById("BirthPassed").value;
+                var manAge = 0;
+
+                if(countAge > 1) {
+                    if(isBirthPassed == "passed") manAge = countAge - 1;
+                    else manAge = countAge - 2;
+                }
+
+                document.getElementById("manAge").value = manAge;
+            }
+            
+            function updateManAgeDate() {
+                var birthDay = document.getElementById("birthDay").value;
+                var todayDate = document.getElementById("todayDate").value;
+                var years = new Date(new Date(todayDate) - new Date(birthDay)).getFullYear() - 1970;
+                var BirthPassed = new Date(new Date(todayDate).setFullYear(2016) - new Date(birthDay).setFullYear(2016)).getTime() > 0;
+
+                document.getElementById("manAgeDate").value = years;
+                if(BirthPassed) document.getElementById("countAgeDate").value = years + 1;
+                else document.getElementById("countAgeDate").value = years + 2;
+            }
+            
+            document.addEventListener("DOMContentLoaded", function() {
+                document.getElementById("todayDate").value = new Date().toDateInputValue();
+            });
+        </script>
+        <!-- Custom styles for this template -->
+        <link href="form-validation.css" rel="stylesheet">
+    </head>
+    <body class="bg-light">
+        <div class="container">
+            <main>
+                <div class="py-5 text-center">
+                    <h2>세는 나이 / 만 나이 계산기</h2>
+                    <p class="lead">헷갈리는 세는 나이와 만 나이 계산기</p>
+                </div>
+                <div class="row g-5">
+                    <div class="col-md-5 col-lg-4 order-md-last">
+                        <h4 class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-primary">학교 학년별 나이</span>
+                        </h4>
+                        <ul class="list-group mb-3">
+                            <li class="list-group-item d-flex justify-content-between">
+                                <div>
+                                    <h6 class="my-0"><strong>초등학교</strong></h6>
+                                    <small class="text-muted">세는나이 기준</small>
+                                </div>
+                                <span>만 나이 기준</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                                <div>
+                                    <h6 class="my-0">1학년</h6>
+                                    <small class="text-muted"> 8세</small>
+                                </div>
+                                <span>만 6 ~ 7세</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                                <div>
+                                    <h6 class="my-0">2학년</h6>
+                                    <small class="text-muted"> 9세</small>
+                                </div>
+                                <span>만 7 ~ 8세</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                                <div>
+                                    <h6 class="my-0">3학년</h6>
+                                    <small class="text-muted">10세</small>
+                                </div>
+                                <span>만 8 ~ 9세</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                                <div>
+                                    <h6 class="my-0">4학년</h6>
+                                    <small class="text-muted">11세</small>
+                                </div>
+                                <span>만 9 ~ 10세</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                                <div>
+                                    <h6 class="my-0">5학년</h6>
+                                    <small class="text-muted">12세</small>
+                                </div>
+                                <span>만 10 ~ 11세</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                                <div>
+                                    <h6 class="my-0">6학년</h6>
+                                    <small class="text-muted">13세</small>
+                                </div>
+                                <span>만 11 ~ 12세</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <div>
+                                    <h6 class="my-0"><strong>중학교</strong></h6>
+                                    <small class="text-muted">세는나이 기준</small>
+                                </div>
+                                <span>만 나이 기준</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                                <div>
+                                    <h6 class="my-0">1학년</h6>
+                                    <small class="text-muted">14세</small>
+                                </div>
+                                <span>만 12 ~ 13세</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                                <div>
+                                    <h6 class="my-0">2학년</h6>
+                                    <small class="text-muted">15세</small>
+                                </div>
+                                <span>만 13 ~ 14세</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                                <div>
+                                    <h6 class="my-0">3학년</h6>
+                                    <small class="text-muted">16세</small>
+                                </div>
+                                <span>만 14 ~ 15세</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <div>
+                                    <h6 class="my-0"><strong>고등학교</strong></h6>
+                                    <small class="text-muted">세는나이 기준</small>
+                                </div>
+                                <span>만 나이 기준</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                                <div>
+                                    <h6 class="my-0">1학년</h6>
+                                    <small class="text-muted">17세</small>
+                                </div>
+                                <span></span><span>만 15 ~ 16세</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                                <div>
+                                    <h6 class="my-0">2학년</h6>
+                                    <small class="text-muted">18세</small>
+                                </div>
+                                <span>만 16 ~ 17세</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between lh-sm">
+                                <div>
+                                    <h6 class="my-0">3학년</h6>
+                                    <small class="text-muted">19세</small>
+                                </div>
+                                <span>만 17 ~ 18세</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-7 col-lg-8">
+                        <h4 class="mb-3">세는 나이 → 만 나이 변환</h4>
+                        <form class="needs-validation" novalidate="">
+                            <div class="row g-3">
+                                <div class="col-sm-4">
+                                    <label for="countAge" class="form-label">세는 나이</label>
+                                    <div class="input-group has-validation">
+                                        <input type="number" class="form-control" id="countAge" onchange="updateManAge()">
+                                        <span class="input-group-text">세</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="BirthPassed" class="form-label">생일 여부</label>
+                                    <select id="BirthPassed" class="form-select" onchange="updateManAge()">
+                                        <option selected="" value="passed">생일이 지났습니다</option>
+                                        <option value="notpassed">생일이 지나지 않았습니다</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="manAge" class="form-label">만 나이</label>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text">만</span>
+                                        <input type="number" class="form-control" id="manAge" disabled>
+                                        <span class="input-group-text">세</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <hr class="my-4">
+                        <h4 class="mb-3">생일 기준 세는 나이와 만 나이</h4>
+                        <form class="needs-validation" novalidate="">
+                            <div class="row g-3">
+                                <div class="col-sm-3">
+                                    <label for="birthDay" class="form-label">생일</label>
+                                    <input type="date" class="form-control" id="birthDay" onchange="updateManAgeDate()">
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="todayDate" class="form-label">기준 날짜</label>
+                                    <input type="date" class="form-control" id="todayDate" onchange="updateManAgeDate()">
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="countAgeDate" class="form-label">세는 나이</label>
+                                    <div class="input-group has-validation">
+                                        <input type="number" class="form-control" id="countAgeDate" disabled="">
+                                        <span class="input-group-text">세</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="manAgeDate" class="form-label">만 나이</label>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text">만</span>
+                                        <input type="number" class="form-control" id="manAgeDate" disabled="">
+                                        <span class="input-group-text">세</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </main>
+            <footer class="my-5 pt-5 text-muted text-center text-small">
+                <p class="mb-1">© 2017–2021 Company Name</p>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="#">Privacy</a></li>
+                    <li class="list-inline-item"><a href="#">Terms</a></li>
+                    <li class="list-inline-item"><a href="#">Support</a></li>
+                </ul>
+            </footer>
+        </div>
+        <script src="./bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    </body>
+</html>
