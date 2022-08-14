@@ -65,8 +65,6 @@
                 document.getElementById("todayDate").value = new Date().toDateInputValue();
             });
         </script>
-        <!-- Custom styles for this template -->
-        <link href="form-validation.css" rel="stylesheet">
     </head>
     <body class="bg-light">
         <div class="container">
@@ -78,11 +76,11 @@
                 <div class="row g-5">
                     <div class="col-md-7 col-lg-8">
                         <h4 class="mb-3">세는 나이 → 만 나이 변환</h4>
-                        <form class="needs-validation" novalidate="">
+                        <form novalidate="">
                             <div class="row g-3">
                                 <div class="col-sm-4">
                                     <label for="countAge" class="form-label">세는 나이</label>
-                                    <div class="input-group has-validation">
+                                    <div class="input-group">
                                         <input type="number" class="form-control" id="countAge" onchange="updateManAge()">
                                         <span class="input-group-text">세</span>
                                     </div>
@@ -96,7 +94,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <label for="manAge" class="form-label">만 나이</label>
-                                    <div class="input-group has-validation">
+                                    <div class="input-group">
                                         <span class="input-group-text">만</span>
                                         <input type="number" class="form-control" id="manAge" disabled>
                                         <span class="input-group-text">세</span>
@@ -106,7 +104,7 @@
                         </form>
                         <hr class="my-4">
                         <h4 class="mb-3">생일 기준 세는 나이와 만 나이</h4>
-                        <form class="needs-validation" novalidate="">
+                        <form novalidate="">
                             <div class="row g-3">
                                 <div class="col-sm-3">
                                     <label for="birthDay" class="form-label">생일</label>
@@ -118,14 +116,14 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <label for="countAgeDate" class="form-label">세는 나이</label>
-                                    <div class="input-group has-validation">
+                                    <div class="input-group">
                                         <input type="number" class="form-control" id="countAgeDate" disabled="">
                                         <span class="input-group-text">세</span>
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
                                     <label for="manAgeDate" class="form-label">만 나이</label>
-                                    <div class="input-group has-validation">
+                                    <div class="input-group">
                                         <span class="input-group-text">만</span>
                                         <input type="number" class="form-control" id="manAgeDate" disabled="">
                                         <span class="input-group-text">세</span>
